@@ -1,67 +1,22 @@
-b();
-console.log(a);
+var person = new Object();
 
-// Hoisting - Setup Memory Space for Variables and Functions
+// computed member access
+person['firstname'] = 'Sebastian';
+person['lastname'] = 'Gulczynski';
 
-var a = 'Hello World!';
+var firstNameProperty = 'firstname';
 
-function b() {
-    console.log('function b called');
-}
+console.log(person);
+console.log(person[firstNameProperty]);
 
-b();
-console.log(a);
+// member access
+console.log(person.lastname);
 
-////////////////////
+person.address = new Object();
+person.address.street = 'Jana Piekalkiewicza 13';
+person.address.city = 'Poznan';
+person.address.state = 'wielkopolskie';
 
-var c;
-console.log(c);
-
-// unikamy przypisywania undefined
-//c = undefined;
-
-if (c === undefined) {
-    console.log('c is undefined');
-}
-else {
-    console.log('c is defined');
-}
-
-////////////////////
-
-// zasięg zmiennej (scope) zależy od środowiska leksykalnego,
-// a nie od położenia w stosie uruchomienia funkcji
-console.log('--=== Scoping ===--');
-
-// 1
-/*
-function secondF() {
-    //var myVar = 3;
-    console.log(myVar);
-}
-
-function firstF() {
-    var myVar = 2;
-    secondF();
-}
-
-var myVar = 1;
-firstF();
-*/
-
-// 2
-function firstF() {
-    function secondF() {
-        console.log(myVar);
-    }
-    
-    var myVar = 2;
-    secondF();
-}
-
-var myVar = 1;
-firstF();
-// w fazie kreacji kontekstu funkcja secondF nie została
-// zadeklarowana, bo nie ma jej w kontekście global,
-// pojawi się w kontekście funkcji firstF
-// secondF();
+console.log(person.address.street);
+console.log(person.address.city);
+console.log(person['address']['state']);
